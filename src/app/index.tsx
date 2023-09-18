@@ -1,11 +1,13 @@
 import { Stack } from "expo-router";
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
-import { Header, Nav } from "@/client/components";
-import styles from "@/client/styles/map";
+import { Map, Nav } from "@/client/components";
+import { makeStyles } from "@rneui/themed";
 
-const Map = () => {
+const MapView = () => {
+  const styles = useStyles();
+
   return (
     <SafeAreaView style={styles.container}>
       <Stack.Screen
@@ -13,15 +15,24 @@ const Map = () => {
           headerShown: false,
         }}
       />
-      <Header>
-        <Text>Map</Text>
-      </Header>
 
-      <View style={styles.main}>Map View</View>
+      <View style={styles.main}>
+        <Map />
+      </View>
 
       <Nav />
     </SafeAreaView>
   );
 };
 
-export default Map;
+export default MapView;
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+  main: {
+    flex: 1,
+  },
+}));

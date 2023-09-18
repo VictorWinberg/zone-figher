@@ -3,7 +3,14 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 
+import { ThemeProvider, createTheme } from "@rneui/themed";
+
 SplashScreen.preventAutoHideAsync();
+
+const theme = createTheme({
+  lightColors: {},
+  darkColors: {},
+});
 
 const Layout = () => {
   const [fontsLoaded] = useFonts({
@@ -22,7 +29,11 @@ const Layout = () => {
     return null;
   }
 
-  return <Stack />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Stack />
+    </ThemeProvider>
+  );
 };
 
 export default Layout;

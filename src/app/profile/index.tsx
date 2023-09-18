@@ -1,12 +1,13 @@
 import { Stack } from "expo-router";
 import React from "react";
-import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 
-import { Header, Nav } from "@/client/components";
-import { icons } from "@/client/constants";
-import styles from "@/client/styles/profile";
+import { Nav } from "@/client/components";
+import { Text, makeStyles } from "@rneui/themed";
 
-const Profile = () => {
+export default function ProfileView() {
+  const styles = useStyles();
+
   return (
     <SafeAreaView style={styles.container}>
       <Stack.Screen
@@ -14,27 +15,25 @@ const Profile = () => {
           headerShown: false,
         }}
       />
-      <Header>
-        <View style={styles.profileIconWrapper}>
-          <Image
-            source={icons.profile}
-            resizeMode="contain"
-            style={styles.profileIcon}
-          />
-        </View>
-      </Header>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={styles.scrollContainer}
-      >
-        <View style={styles.profileInformationContainer}>
-          <Text>This is the your profile page!</Text>
-        </View>
-      </ScrollView>
+
+      <View style={styles.main}>
+        <Text h1>Profile</Text>
+        <Text>This is the your profile page!</Text>
+      </View>
 
       <Nav />
     </SafeAreaView>
   );
-};
+}
 
-export default Profile;
+const useStyles = makeStyles(theme => ({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+  main: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+}));

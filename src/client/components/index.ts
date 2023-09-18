@@ -1,4 +1,4 @@
-import Header from "./common/header/header";
+import Map from "./Map";
 import Nav from "./common/nav/Nav";
 
-export { Header, Nav };
+export { Nav, Map };

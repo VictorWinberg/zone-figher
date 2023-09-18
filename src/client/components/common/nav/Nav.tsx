@@ -3,10 +3,10 @@ import React from "react";
 import { Image, Pressable, Text, View } from "react-native";
 
 import { icons } from "@/client/constants";
+import { makeStyles } from "@rneui/themed";
 
-import styles from "./nav.style";
-
-const Nav = () => {
+export default function Nav() {
+  const styles = useStyles();
   const router = useRouter();
 
   return (
@@ -39,6 +39,22 @@ const Nav = () => {
       </Pressable>
     </View>
   );
-};
+}
 
-export default Nav;
+const useStyles = makeStyles(theme => ({
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: theme.colors.background,
+  },
+  navBtn: {
+    flex: 1,
+    padding: theme.spacing.lg,
+    alignItems: "center",
+  },
+  navIcon: {
+    width: 30,
+    height: 30,
+  },
+}));
